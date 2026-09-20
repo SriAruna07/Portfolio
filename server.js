@@ -25,7 +25,7 @@ const Contact = mongoose.model("Contact", contactSchema);
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(_dirname));
+app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
     res.send("Portfolio backend is running!");
