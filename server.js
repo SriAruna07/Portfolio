@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connected successfully!"))
@@ -25,6 +25,7 @@ const Contact = mongoose.model("Contact", contactSchema);
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(_dirname));
 
 app.get("/", (req, res) => {
     res.send("Portfolio backend is running!");
